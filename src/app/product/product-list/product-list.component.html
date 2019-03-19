@@ -1,0 +1,44 @@
+<h3>Product list</h3>
+<div>
+  <label for="search">Search: </label>
+  <input id="search" type="text" [(ngModel)]="searchTerm" placeholder="filter product list" />
+</div>
+<div>
+  <button (click)="toggleImage()">
+    {{ showImage ? 'Hide' : 'Show' }} images
+  </button>
+  <table *ngIf= " products | productSearch:searchTerm as filteredProducts; else noProduct"
+         border="1"
+         cellspacing="0"
+         cellpadding="10">
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td *ngIf="showImage">Image</td>
+        <td>Name</td>
+        <td>Code</td>
+        <td>Release date</td>
+        <td>Price</td>
+        <td>Rating</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of filteredProducts">
+        <td>#{{ product.id }}</td>
+        <td *ngIf="showImage">
+          <img [src]="product.imageUrl" width="30px" />
+        </td>
+        <td>{{ product.productName }}</td>
+        <td>{{ product.productCode }}</td>
+        <td>{{ product.releaseDate }}</td>
+        <td>{{ product.price }}€</td>
+        <td>
+          <app-star></app-star>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #noProduct>
+    <h4>⛔ No product available! You can save 💵</h4>
+  </ng-template>
+</div> 
