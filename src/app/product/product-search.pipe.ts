@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Product } from './product-list/product-list.component';
+import { Iproduct } from '../shared/model/product/product';
+
 
 
 @Pipe({
@@ -7,7 +8,7 @@ import { Product } from './product-list/product-list.component';
 })
 export class ProductSearchPipe implements PipeTransform {
 
-  transform(value: Product[], term: string = ''): Product[] {
+  transform(value: Iproduct[], term: string = ''): Iproduct[] {
 
     if (Array.isArray(value)) {
 
@@ -24,6 +25,7 @@ export class ProductSearchPipe implements PipeTransform {
       })
     } else {
       console.error('Given value must be an array! 💥')
+      return[]
     }
 }
 }
