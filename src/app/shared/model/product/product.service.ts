@@ -25,13 +25,25 @@ this.http
   map((products: Iproduct[]) => {
     return products.map((product: Iproduct) => new Product(product))
   }),
-  tap((products: Product[]) => console.log('products server run'))
+  tap((products: Product[]) => console.log(`products server run ${products.length}`))
 )
 .subscribe((products: Product[]) => this.products.next(products))
 }
 
   public getProducts(): Observable<Product[]> {
     return this.products$
+  }
+
+  public getProductById(id: number): Observable<Product> {
+    return this.products$.pipe(
+
+      map((products: Product[]) => {
+
+        return products.find((product: Product) => {
+          return product.id === id
+        })
+      })
+    )
   }
 
 }

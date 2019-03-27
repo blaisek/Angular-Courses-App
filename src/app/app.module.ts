@@ -13,6 +13,9 @@ import { ProductListComponent } from './product/product-list/product-list.compon
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 import { StarComponent } from './shared/ui/star/star.component';
 import { ProductSearchPipe } from './product/product-search.pipe';
+import { ProductComponent } from './product/product/product.component';
+import { ProductEditComponent } from './product/product-edit/product-edit.component';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { ProductSearchPipe } from './product/product-search.pipe';
     ProductListComponent,
     ProductDetailComponent,
     StarComponent,
-    ProductSearchPipe
+    ProductSearchPipe,
+    ProductComponent,
+    ProductEditComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
